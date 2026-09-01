@@ -1,9 +1,14 @@
+import { config } from "./config.js";
+import { getWalletInfo } from "./wallet.js";
+
 const agent = {
   name: "Base Wallet Agent",
-  network: "Base",
+  network: config.network,
   status: "learning"
 };
 
+const wallet = getWalletInfo();
+
 console.log(`${agent.name} is ready.`);
 console.log(`Network: ${agent.network}`);
-console.log(`Status: ${agent.status}`);
+console.log(`Wallet connected: ${wallet.connected}`);
