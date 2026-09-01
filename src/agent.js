@@ -1,4 +1,5 @@
 import { BaseMCPClient } from "./mcp/client.js";
+import { getNetworkInfo } from "./tools/network.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -7,9 +8,12 @@ export class BaseWalletAgent {
   }
 
   getStatus() {
+    const network = getNetworkInfo();
+
     return {
-      network: this.config.network,
-      testnet: this.config.testnet,
+      network: network.name,
+      testnet: network.testnet,
+      chainId: network.chainId,
       mcpServer: this.mcp.getEndpoint(),
       mcpConfigured: this.mcp.isConfigured()
     };
