@@ -5,3 +5,11 @@ export function getBalance() {
     network: "Base"
   };
 }
+
+export function createBalanceRequest() {
+  return {
+    tool: "get_balance",
+    args: {},
+    requiresApproval: false
+  };
+}
