@@ -2,6 +2,7 @@ import { BaseMCPClient } from "./mcp/client.js";
 import { listMcpTools } from "./mcp/tools.js";
 import { getNetworkInfo } from "./tools/network.js";
 import { getAddressInfo } from "./tools/address.js";
+import { createBalanceRequest } from "./tools/balance.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -26,5 +27,9 @@ export class BaseWalletAgent {
 
   prepareAction(toolName, args = {}) {
     return this.mcp.prepareToolCall(toolName, args);
+  }
+
+  prepareBalanceCheck() {
+    return createBalanceRequest();
   }
 }
