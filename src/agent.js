@@ -3,6 +3,7 @@ import { listMcpTools } from "./mcp/tools.js";
 import { getNetworkInfo } from "./tools/network.js";
 import { getAddressInfo } from "./tools/address.js";
 import { createBalanceRequest } from "./tools/balance.js";
+import { createSendRequest } from "./tools/send.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -31,5 +32,9 @@ export class BaseWalletAgent {
 
   prepareBalanceCheck() {
     return createBalanceRequest();
+  }
+
+  prepareSend(token, recipient, amount) {
+    return createSendRequest(token, recipient, amount);
   }
 }
