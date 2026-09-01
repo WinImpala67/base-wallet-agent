@@ -1,3 +1,5 @@
+import { getEnv } from "../env.js";
+
 export const mcpConfig = {
-  serverUrl: process.env.BASE_MCP_SERVER || "https://mcp.base.org"
+  serverUrl: getEnv("BASE_MCP_SERVER", "https://mcp.base.org")
 };
