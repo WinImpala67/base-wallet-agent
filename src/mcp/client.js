@@ -9,9 +9,13 @@ export class BaseMCPClient {
     return this.endpoint;
   }
 
+  isConfigured() {
+    return Boolean(this.endpoint);
+  }
+
   getStatus() {
     return {
-      connected: false,
+      configured: this.isConfigured(),
       endpoint: this.endpoint
     };
   }
