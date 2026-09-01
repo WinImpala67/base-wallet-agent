@@ -6,6 +6,7 @@ import { BaseWalletAgent } from "./agent.js";
 const agent = new BaseWalletAgent(config);
 const wallet = getWalletInfo();
 const status = agent.getStatus(wallet.address);
+const balanceRequest = agent.prepareBalanceCheck();
 
 console.log(`${agent.config.network} Wallet Agent`);
 console.log(`Wallet connected: ${wallet.connected}`);
@@ -19,5 +20,9 @@ console.log("MCP tools:");
 for (const tool of status.mcpTools) {
   console.log(`- ${tool.name}: ${tool.description}`);
 }
+
+console.log("Balance request:");
+console.log(`Tool: ${balanceRequest.tool}`);
+console.log(`Requires approval: ${balanceRequest.requiresApproval}`);
 
 console.log(`Available commands: ${Object.keys(commands).join(", ")}`);
