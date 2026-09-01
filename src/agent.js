@@ -23,4 +23,8 @@ export class BaseWalletAgent {
       mcpTools: listMcpTools()
     };
   }
+
+  prepareAction(toolName, args = {}) {
+    return this.mcp.prepareToolCall(toolName, args);
+  }
 }
