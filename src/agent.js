@@ -1,4 +1,5 @@
 import { BaseMCPClient } from "./mcp/client.js";
+import { listMcpTools } from "./mcp/tools.js";
 import { getNetworkInfo } from "./tools/network.js";
 import { getAddressInfo } from "./tools/address.js";
 
@@ -18,7 +19,8 @@ export class BaseWalletAgent {
       chainId: network.chainId,
       wallet: wallet,
       mcpServer: this.mcp.getEndpoint(),
-      mcpConfigured: this.mcp.isConfigured()
+      mcpConfigured: this.mcp.isConfigured(),
+      mcpTools: listMcpTools()
     };
   }
 }
