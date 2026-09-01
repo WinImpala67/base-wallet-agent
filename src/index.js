@@ -13,4 +13,11 @@ console.log(`Network: ${status.network}`);
 console.log(`Testnet: ${status.testnet}`);
 console.log(`Chain ID: ${status.chainId}`);
 console.log(`MCP configured: ${status.mcpConfigured}`);
+
+console.log("MCP tools:");
+
+for (const tool of status.mcpTools) {
+  console.log(`- ${tool.name}: ${tool.description}`);
+}
+
 console.log(`Available commands: ${Object.keys(commands).join(", ")}`);
