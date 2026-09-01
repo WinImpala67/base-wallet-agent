@@ -1,0 +1,11 @@
+{
+  "name": "base-wallet-agent",
+  "version": "1.0.0",
+  "description": "An AI agent project built around Base blockchain tools",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "license": "MIT"
+}
