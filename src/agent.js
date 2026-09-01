@@ -10,7 +10,8 @@ export class BaseWalletAgent {
     return {
       network: this.config.network,
       testnet: this.config.testnet,
-      mcpServer: this.mcp.getEndpoint()
+      mcpServer: this.mcp.getEndpoint(),
+      mcpConfigured: this.mcp.isConfigured()
     };
   }
 }
