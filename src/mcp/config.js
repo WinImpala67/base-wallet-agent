@@ -1,3 +1,3 @@
 export const mcpConfig = {
-  serverUrl: "https://mcp.base.org"
+  serverUrl: process.env.BASE_MCP_SERVER || "https://mcp.base.org"
 };
