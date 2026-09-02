@@ -17,6 +17,11 @@ const contractRequest = agent.prepareContractCall(
   []
 );
 
+const x402Request = agent.prepareX402Payment(
+  "https://example.com/api",
+  "0.001"
+);
+
 console.log(`${agent.config.network} Wallet Agent`);
 console.log(`Wallet connected: ${wallet.connected}`);
 console.log(`Network: ${status.network}`);
@@ -35,36 +40,26 @@ console.log(`Tool: ${balanceRequest.tool}`);
 console.log(`Requires approval: ${balanceRequest.requiresApproval}`);
 
 console.log("Swap request:");
-
-if (swapRequest.success) {
-  console.log(`Tool: ${swapRequest.tool}`);
-  console.log(`From: ${swapRequest.args.fromToken}`);
-  console.log(`To: ${swapRequest.args.toToken}`);
-  console.log(`Amount: ${swapRequest.args.amount}`);
-  console.log(`Requires approval: ${swapRequest.requiresApproval}`);
-} else {
-  console.log(`Error: ${swapRequest.error}`);
-}
+console.log(`Tool: ${swapRequest.tool}`);
+console.log(`Requires approval: ${swapRequest.requiresApproval}`);
 
 console.log("Sign request:");
-
-if (signRequest.success) {
-  console.log(`Tool: ${signRequest.tool}`);
-  console.log(`Message: ${signRequest.args.message}`);
-  console.log(`Requires approval: ${signRequest.requiresApproval}`);
-} else {
-  console.log(`Error: ${signRequest.error}`);
-}
+console.log(`Tool: ${signRequest.tool}`);
+console.log(`Requires approval: ${signRequest.requiresApproval}`);
 
 console.log("Contract call request:");
+console.log(`Tool: ${contractRequest.tool}`);
+console.log(`Requires approval: ${contractRequest.requiresApproval}`);
 
-if (contractRequest.success) {
-  console.log(`Tool: ${contractRequest.tool}`);
-  console.log(`Contract: ${contractRequest.args.contractAddress}`);
-  console.log(`Function: ${contractRequest.args.functionName}`);
-  console.log(`Requires approval: ${contractRequest.requiresApproval}`);
+console.log("x402 payment request:");
+
+if (x402Request.success) {
+  console.log(`Tool: ${x402Request.tool}`);
+  console.log(`URL: ${x402Request.args.url}`);
+  console.log(`Amount: ${x402Request.args.amount}`);
+  console.log(`Requires approval: ${x402Request.requiresApproval}`);
 } else {
-  console.log(`Error: ${contractRequest.error}`);
+  console.log(`Error: ${x402Request.error}`);
 }
 
 console.log(`Available commands: ${Object.keys(commands).join(", ")}`);
