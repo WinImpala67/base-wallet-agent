@@ -11,6 +11,12 @@ const balanceRequest = agent.prepareBalanceCheck();
 const swapRequest = agent.prepareSwap("ETH", "USDC", "0.01");
 const signRequest = agent.prepareSign("Base Wallet Agent");
 
+const contractRequest = agent.prepareContractCall(
+  "0x0000000000000000000000000000000000000000",
+  "exampleFunction",
+  []
+);
+
 console.log(`${agent.config.network} Wallet Agent`);
 console.log(`Wallet connected: ${wallet.connected}`);
 console.log(`Network: ${status.network}`);
@@ -48,6 +54,17 @@ if (signRequest.success) {
   console.log(`Requires approval: ${signRequest.requiresApproval}`);
 } else {
   console.log(`Error: ${signRequest.error}`);
+}
+
+console.log("Contract call request:");
+
+if (contractRequest.success) {
+  console.log(`Tool: ${contractRequest.tool}`);
+  console.log(`Contract: ${contractRequest.args.contractAddress}`);
+  console.log(`Function: ${contractRequest.args.functionName}`);
+  console.log(`Requires approval: ${contractRequest.requiresApproval}`);
+} else {
+  console.log(`Error: ${contractRequest.error}`);
 }
 
 console.log(`Available commands: ${Object.keys(commands).join(", ")}`);
