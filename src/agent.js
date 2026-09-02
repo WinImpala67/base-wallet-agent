@@ -31,6 +31,13 @@ export class BaseWalletAgent {
   }
 
   prepareAction(toolName, args = {}) {
+    if (!toolName || typeof toolName !== "string") {
+      return {
+        success: false,
+        error: "Tool name is required"
+      };
+    }
+
     return this.mcp.prepareToolCall(toolName, args);
   }
 
