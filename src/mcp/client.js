@@ -35,6 +35,13 @@ export class BaseMCPClient {
       };
     }
 
+    if (args === null || typeof args !== "object") {
+      return {
+        success: false,
+        error: "Tool arguments must be an object"
+      };
+    }
+
     return {
       success: true,
       tool: tool.name,
