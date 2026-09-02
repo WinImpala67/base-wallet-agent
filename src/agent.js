@@ -6,6 +6,7 @@ import { createBalanceRequest } from "./tools/balance.js";
 import { createSendRequest } from "./tools/send.js";
 import { createSwapRequest } from "./tools/swap.js";
 import { createSignRequest } from "./tools/sign.js";
+import { createContractCallRequest } from "./tools/contract.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -46,5 +47,13 @@ export class BaseWalletAgent {
 
   prepareSign(message) {
     return createSignRequest(message);
+  }
+
+  prepareContractCall(contractAddress, functionName, args = []) {
+    return createContractCallRequest(
+      contractAddress,
+      functionName,
+      args
+    );
   }
 }
