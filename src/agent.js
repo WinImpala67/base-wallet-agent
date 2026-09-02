@@ -7,6 +7,7 @@ import { createSendRequest } from "./tools/send.js";
 import { createSwapRequest } from "./tools/swap.js";
 import { createSignRequest } from "./tools/sign.js";
 import { createContractCallRequest } from "./tools/contract.js";
+import { createX402PaymentRequest } from "./tools/x402.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -55,5 +56,9 @@ export class BaseWalletAgent {
       functionName,
       args
     );
+  }
+
+  prepareX402Payment(url, amount) {
+    return createX402PaymentRequest(url, amount);
   }
 }
