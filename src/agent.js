@@ -5,6 +5,7 @@ import { getAddressInfo } from "./tools/address.js";
 import { createBalanceRequest } from "./tools/balance.js";
 import { createSendRequest } from "./tools/send.js";
 import { createSwapRequest } from "./tools/swap.js";
+import { createSignRequest } from "./tools/sign.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -41,5 +42,9 @@ export class BaseWalletAgent {
 
   prepareSwap(fromToken, toToken, amount) {
     return createSwapRequest(fromToken, toToken, amount);
+  }
+
+  prepareSign(message) {
+    return createSignRequest(message);
   }
 }
