@@ -59,8 +59,16 @@ if (sendRequest.success) {
 }
 
 console.log("Swap request:");
-console.log(`Tool: ${swapRequest.tool}`);
-console.log(`Requires approval: ${swapRequest.requiresApproval}`);
+
+if (swapRequest.success) {
+  console.log(`Tool: ${swapRequest.tool}`);
+  console.log(`From token: ${swapRequest.args.fromToken}`);
+  console.log(`To token: ${swapRequest.args.toToken}`);
+  console.log(`Amount: ${swapRequest.args.amount}`);
+  console.log(`Requires approval: ${swapRequest.requiresApproval}`);
+} else {
+  console.log(`Error: ${swapRequest.error}`);
+}
 
 console.log("Sign request:");
 console.log(`Tool: ${signRequest.tool}`);
