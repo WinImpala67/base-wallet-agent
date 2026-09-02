@@ -9,6 +9,26 @@ export const commands = {
 
   network: {
     description: "Show the current blockchain network"
+  },
+
+  send: {
+    description: "Prepare a token transfer with user approval"
+  },
+
+  swap: {
+    description: "Prepare a token swap with user approval"
+  },
+
+  sign: {
+    description: "Prepare a message signature with user approval"
+  },
+
+  contract: {
+    description: "Prepare a contract call with user approval"
+  },
+
+  x402: {
+    description: "Prepare an x402 payment with user approval"
   }
 };
 
