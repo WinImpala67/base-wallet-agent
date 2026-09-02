@@ -41,6 +41,56 @@ export class BaseWalletAgent {
     return this.mcp.prepareToolCall(toolName, args);
   }
 
+  prepareCommand(command, args = {}) {
+    if (!command || typeof command !== "string") {
+      return {
+        success: false,
+        error: "Command is required"
+      };
+    }
+
+    switch (command) {
+      case "balance":
+        return this.prepareBalanceCheck();
+
+      case "send":
+        return this.prepareSend(
+          args.token,
+          args.recipient,
+          args.amount
+        );
+
+      case "swap":
+        return this.prepareSwap(
+          args.fromToken,
+          args.toToken,
+          args.amount
+        );
+
+      case "sign":
+        return this.prepareSign(args.message);
+
+      case "contract":
+        return this.prepareContractCall(
+          args.contractAddress,
+          args.functionName,
+          args.args || []
+        );
+
+      case "x402":
+        return this.prepareX402Payment(
+          args.url,
+          args.amount
+        );
+
+      default:
+        return {
+          success: false,
+          error: "Unknown command"
+        };
+    }
+  }
+
   prepareBalanceCheck() {
     return createBalanceRequest();
   }
