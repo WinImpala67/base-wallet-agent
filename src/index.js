@@ -47,8 +47,16 @@ console.log(`Tool: ${balanceRequest.tool}`);
 console.log(`Requires approval: ${balanceRequest.requiresApproval}`);
 
 console.log("Send request:");
-console.log(`Tool: ${sendRequest.tool}`);
-console.log(`Requires approval: ${sendRequest.requiresApproval}`);
+
+if (sendRequest.success) {
+  console.log(`Tool: ${sendRequest.tool}`);
+  console.log(`Token: ${sendRequest.args.token}`);
+  console.log(`Recipient: ${sendRequest.args.recipient}`);
+  console.log(`Amount: ${sendRequest.args.amount}`);
+  console.log(`Requires approval: ${sendRequest.requiresApproval}`);
+} else {
+  console.log(`Error: ${sendRequest.error}`);
+}
 
 console.log("Swap request:");
 console.log(`Tool: ${swapRequest.tool}`);
