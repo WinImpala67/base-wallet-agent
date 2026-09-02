@@ -22,6 +22,11 @@ export const mcpTools = {
   contractCall: {
     name: "contract_call",
     description: "Execute a contract call with user approval"
+  },
+
+  payX402: {
+    name: "pay_x402",
+    description: "Pay an x402 API with user approval"
   }
 };
 
