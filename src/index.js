@@ -8,6 +8,13 @@ const wallet = getWalletInfo();
 const status = agent.getStatus(wallet.address);
 
 const balanceRequest = agent.prepareBalanceCheck();
+
+const sendRequest = agent.prepareSend(
+  "ETH",
+  "0x0000000000000000000000000000000000000000",
+  "0.001"
+);
+
 const swapRequest = agent.prepareSwap("ETH", "USDC", "0.01");
 const signRequest = agent.prepareSign("Base Wallet Agent");
 
@@ -38,6 +45,10 @@ for (const tool of status.mcpTools) {
 console.log("Balance request:");
 console.log(`Tool: ${balanceRequest.tool}`);
 console.log(`Requires approval: ${balanceRequest.requiresApproval}`);
+
+console.log("Send request:");
+console.log(`Tool: ${sendRequest.tool}`);
+console.log(`Requires approval: ${sendRequest.requiresApproval}`);
 
 console.log("Swap request:");
 console.log(`Tool: ${swapRequest.tool}`);
