@@ -71,8 +71,14 @@ if (swapRequest.success) {
 }
 
 console.log("Sign request:");
-console.log(`Tool: ${signRequest.tool}`);
-console.log(`Requires approval: ${signRequest.requiresApproval}`);
+
+if (signRequest.success) {
+  console.log(`Tool: ${signRequest.tool}`);
+  console.log(`Message: ${signRequest.args.message}`);
+  console.log(`Requires approval: ${signRequest.requiresApproval}`);
+} else {
+  console.log(`Error: ${signRequest.error}`);
+}
 
 console.log("Contract call request:");
 console.log(`Tool: ${contractRequest.tool}`);
