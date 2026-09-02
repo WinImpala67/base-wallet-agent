@@ -7,6 +7,7 @@ const agent = new BaseWalletAgent(config);
 const wallet = getWalletInfo();
 const status = agent.getStatus(wallet.address);
 const balanceRequest = agent.prepareBalanceCheck();
+const swapRequest = agent.prepareSwap("ETH", "USDC", "0.01");
 
 console.log(`${agent.config.network} Wallet Agent`);
 console.log(`Wallet connected: ${wallet.connected}`);
@@ -24,5 +25,17 @@ for (const tool of status.mcpTools) {
 console.log("Balance request:");
 console.log(`Tool: ${balanceRequest.tool}`);
 console.log(`Requires approval: ${balanceRequest.requiresApproval}`);
+
+console.log("Swap request:");
+
+if (swapRequest.success) {
+  console.log(`Tool: ${swapRequest.tool}`);
+  console.log(`From: ${swapRequest.args.fromToken}`);
+  console.log(`To: ${swapRequest.args.toToken}`);
+  console.log(`Amount: ${swapRequest.args.amount}`);
+  console.log(`Requires approval: ${swapRequest.requiresApproval}`);
+} else {
+  console.log(`Error: ${swapRequest.error}`);
+}
 
 console.log(`Available commands: ${Object.keys(commands).join(", ")}`);
