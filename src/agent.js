@@ -4,6 +4,7 @@ import { getNetworkInfo } from "./tools/network.js";
 import { getAddressInfo } from "./tools/address.js";
 import { createBalanceRequest } from "./tools/balance.js";
 import { createSendRequest } from "./tools/send.js";
+import { createSwapRequest } from "./tools/swap.js";
 
 export class BaseWalletAgent {
   constructor(config) {
@@ -36,5 +37,9 @@ export class BaseWalletAgent {
 
   prepareSend(token, recipient, amount) {
     return createSendRequest(token, recipient, amount);
+  }
+
+  prepareSwap(fromToken, toToken, amount) {
+    return createSwapRequest(fromToken, toToken, amount);
   }
 }
