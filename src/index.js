@@ -81,8 +81,16 @@ if (signRequest.success) {
 }
 
 console.log("Contract call request:");
-console.log(`Tool: ${contractRequest.tool}`);
-console.log(`Requires approval: ${contractRequest.requiresApproval}`);
+
+if (contractRequest.success) {
+  console.log(`Tool: ${contractRequest.tool}`);
+  console.log(`Contract: ${contractRequest.args.contractAddress}`);
+  console.log(`Function: ${contractRequest.args.functionName}`);
+  console.log(`Arguments: ${JSON.stringify(contractRequest.args.args)}`);
+  console.log(`Requires approval: ${contractRequest.requiresApproval}`);
+} else {
+  console.log(`Error: ${contractRequest.error}`);
+}
 
 console.log("x402 payment request:");
 
